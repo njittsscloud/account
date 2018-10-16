@@ -1,0 +1,22 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: account
+  # 数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/tss?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+
+# MyBatis配置
+mybatis:
+  type-aliases-package: com.momo.cloud.eurekauserclient.pojo
+  mapper-locations: classpath:mapper/*.xml
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://tss.com:8080/eureka/

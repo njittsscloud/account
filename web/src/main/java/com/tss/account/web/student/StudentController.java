@@ -1,12 +1,14 @@
 package com.tss.account.web.student;
 
 import com.tss.account.interfaces.student.StudentInterface;
+import com.tss.account.interfaces.student.vo.UserBaseInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,5 +31,11 @@ public class StudentController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void login() {
         
+    }
+
+    @ApiOperation(value = "获取用户基本信息", notes = "获取用户基本信息")
+    @RequestMapping(value = "/getUserBaseInfoById/{id}", method = RequestMethod.GET)
+    public UserBaseInfo getUserBaseInfo(@PathVariable Long id) {
+        return studentInterface.getUserBaseInfo(id);
     }
 }

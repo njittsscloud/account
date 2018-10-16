@@ -1,5 +1,6 @@
 server:
   port: 8086
+  context-path: /account
 
 spring:
   application:
@@ -18,4 +19,11 @@ mybatis:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/
+      defaultZone: http://dev.tss.com:8080/eureka/
+  instance:
+    status-page-url: http://dev.tss.com:${server.port}${server.context-path}/swagger-ui.html
+
+logging:
+  level:
+    root: INFO
+    com.tss: DEBUG

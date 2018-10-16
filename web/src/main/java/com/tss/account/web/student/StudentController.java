@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author: MQG
  * @date: 2018/10/16
  */
-@Api(value = "学生模块", tags = "StudentController")
+@Api(value = "学生模块", tags = "StudentController", description = "学生模块")
 @RestController
-@EnableEurekaClient
 public class StudentController {
     private static final Logger LOG = LoggerFactory.getLogger(StudentController.class);
     

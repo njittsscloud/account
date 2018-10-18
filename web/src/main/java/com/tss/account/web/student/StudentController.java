@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,6 +35,10 @@ public class StudentController {
     @ApiOperation(value = "获取用户基本信息", notes = "获取用户基本信息")
     @RequestMapping(value = "/getUserBaseInfoById/{id}", method = RequestMethod.GET)
     public UserBaseInfo getUserBaseInfo(@PathVariable Long id) {
-        return studentInterface.getUserBaseInfo(id);
+        UserBaseInfo userBaseInfo = new UserBaseInfo();
+        userBaseInfo.setId(1L);
+        userBaseInfo.setName("小明");
+        return userBaseInfo;
+//        return studentInterface.getUserBaseInfo(id);
     }
 }

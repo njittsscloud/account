@@ -11,6 +11,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
+  
 
 # MyBatis配置
 mybatis:

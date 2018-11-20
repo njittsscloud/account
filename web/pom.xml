@@ -99,6 +99,12 @@
 			<artifactId>basic-common</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.tss</groupId>
+			<artifactId>basic-site</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

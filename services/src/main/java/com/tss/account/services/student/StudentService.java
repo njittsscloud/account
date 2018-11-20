@@ -5,7 +5,7 @@ import com.tss.account.interfaces.student.vo.UserBaseInfo;
 import com.tss.account.services.student.dao.StudentDao;
 import com.tss.account.services.student.po.Student;
 import com.tss.basic.common.util.ModelMapperUtil;
-import com.tss.common.exception.DataCheckException;
+import com.tss.account.common.exception.DataCheckException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

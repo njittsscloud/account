@@ -43,6 +43,12 @@
 
 			<dependency>
 				<groupId>com.tss.account</groupId>
+				<artifactId>common</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.tss.account</groupId>
 				<artifactId>interfaces</artifactId>
 				<version>1.0.0</version>
 			</dependency>
@@ -69,6 +75,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

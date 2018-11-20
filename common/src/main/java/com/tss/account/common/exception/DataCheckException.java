@@ -1,4 +1,4 @@
-package com.tss.common.exception;
+package com.tss.account.common.exception;
 
 /**
  * @author: MQG

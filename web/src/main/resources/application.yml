@@ -1,6 +1,6 @@
 server:
   port: 8086
-  context-path: /account
+#  context-path: /account
 
 spring:
   application:
@@ -23,11 +23,11 @@ eureka:
   instance:
     metadata-map: 
       management:
-        context-path: ${server.context-path}/actuator
-    health-check-url: http://dev.tss.com:${server.port}${server.context-path}/actuator/health
-    status-page-url: http://dev.tss.com:${server.port}${server.context-path}/swagger-ui.html
+#        context-path: ${server.context-path}/actuator
+#    health-check-url: http://dev.tss.com:${server.port}${server.context-path}/actuator/health
+#    status-page-url: http://dev.tss.com:${server.port}${server.context-path}/swagger-ui.html
 #    status-page-url: http://dev.tss.com:${server.port}${server.context-path}/actuator/info
-    home-page-url: http://dev.tss.com:${server.port}/
+#    home-page-url: http://dev.tss.com:${server.port}/
 
 logging:
   level:

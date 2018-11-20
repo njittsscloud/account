@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tss.account.services.student.dao.StudentDao" >
+<mapper namespace="com.tss.account.services.student.dao.StudentDao">
   <resultMap id="BaseResultMap" type="com.tss.account.services.student.po.Student" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="stu_no" property="stuNo" jdbcType="VARCHAR" />
@@ -18,7 +18,7 @@
   </resultMap>
   
   <sql id="Base_Column_List" >
-    id, stu_no, password, name, head_img, gender, phone, email, desc, class_id, create_time, 
+    id, stu_no, password, `name`, head_img, gender, phone, email, `desc`, class_id, create_time, 
     update_time, del_flag
   </sql>
   

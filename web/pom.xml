@@ -86,6 +86,13 @@
 			<artifactId>services</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		
+		<!-- common -->
+		<dependency>
+			<groupId>com.tss</groupId>
+			<artifactId>basic-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

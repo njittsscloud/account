@@ -9,17 +9,18 @@
 		<version>1.0.0</version>
 	</parent>
 	
-	<artifactId>interfaces</artifactId>
+	<groupId>com.tss.account</groupId>
+	<artifactId>common</artifactId>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
-	<name>interfaces</name>
-	<description>interfaces</description>
-	
-	<dependencies>
-		<dependency>
-			<groupId>com.tss.account</groupId>
-			<artifactId>common</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-	</dependencies>
+
+	<name>common</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
 
 </project>

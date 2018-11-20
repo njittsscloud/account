@@ -35,10 +35,6 @@ public class StudentController {
     @ApiOperation(value = "获取用户基本信息", notes = "获取用户基本信息")
     @RequestMapping(value = "/getUserBaseInfoById/{id}", method = RequestMethod.GET)
     public UserBaseInfo getUserBaseInfo(@PathVariable Long id) {
-        UserBaseInfo userBaseInfo = new UserBaseInfo();
-        userBaseInfo.setId(1L);
-        userBaseInfo.setName("小明");
-        return userBaseInfo;
-//        return studentInterface.getUserBaseInfo(id);
+        return studentInterface.getUserBaseInfo(id);
     }
 }

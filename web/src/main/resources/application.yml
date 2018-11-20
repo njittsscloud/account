@@ -11,11 +11,10 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
-  
 
 # MyBatis配置
 mybatis:
-  mapper-locations: classpath:com/tss/account/*.xml
+  mapper-locations: classpath*:com/tss/account/*.xml
 
 eureka:
   client:
@@ -34,3 +33,7 @@ logging:
   level:
     root: INFO
     com.tss: DEBUG
+    
+management:
+  security:
+    enabled: false

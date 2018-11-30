@@ -6,15 +6,14 @@ import com.tss.account.interfaces.vo.LoginUserInfoVO;
 import com.tss.account.interfaces.vo.UserIdentityVO;
 import com.tss.account.services.student.StudentSessionService;
 import com.tss.basic.site.argumentresolver.InternalJsonParam;
+import com.tss.basic.site.user.annotation.StudentUser;
+import com.tss.basic.site.user.item.CookieName;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 public class StudentController {
     private static final Logger LOG = LoggerFactory.getLogger(StudentController.class);
-
+    
     @Autowired
     private StudentInterface studentInterface;
     @Autowired
@@ -40,6 +39,12 @@ public class StudentController {
         LoginUserInfoVO loginUserInfo = studentInterface.doLogin(userIdentity);
         studentSessionService.setLoginSessionCookie(response, loginUserInfo.getSessionId());
         return loginUserInfo;
+    }
+
+    @ApiOperation(value = "获取学生登录信息", notes = "学生登录")
+    @RequestMapping(value = "/getLoginInfo", method = RequestMethod.POST)
+    public StudentUser getLoginInfo(@CookieValue("studentsid") String sessionId) {
+        return studentInterface.getLoginInfo(sessionId);
     }
 
     @ApiOperation(value = "获取用户基本信息", notes = "获取用户基本信息")

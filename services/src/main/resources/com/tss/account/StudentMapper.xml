@@ -13,15 +13,17 @@
         <result column="email" property="email" jdbcType="VARCHAR"/>
         <result column="desc" property="desc" jdbcType="VARCHAR"/>
         <result column="class_id" property="classId" jdbcType="BIGINT"/>
+        <result column="class_name" property="className" jdbcType="VARCHAR"/>
+        <result column="academic_id" property="academicId" jdbcType="BIGINT"/>
+        <result column="academic_name" property="academicName" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
         <result column="del_flag" property="delFlag" jdbcType="INTEGER"/>
     </resultMap>
-
     <sql id="Base_Column_List">
-    id, student_no, password, salt, `name`, head_img, gender, phone, email, `desc`, class_id, create_time, 
-    update_time, del_flag
-  </sql>
+      id, student_no, password, salt, name, head_img, gender, phone, email, desc, class_id, 
+      class_name, academic_id, academic_name, create_time, update_time, del_flag
+    </sql>
 
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
@@ -65,6 +67,15 @@
             </if>
             <if test="classId != null">
                 class_id,
+            </if>
+            <if test="className != null" >
+                class_name,
+            </if>
+            <if test="academicId != null" >
+                academic_id,
+            </if>
+            <if test="academicName != null" >
+                academic_name,
             </if>
             <if test="createTime != null">
                 create_time,
@@ -110,6 +121,15 @@
             <if test="classId != null">
                 #{classId,jdbcType=BIGINT},
             </if>
+            <if test="className != null" >
+                #{className,jdbcType=VARCHAR},
+            </if>
+            <if test="academicId != null" >
+                #{academicId,jdbcType=BIGINT},
+            </if>
+            <if test="academicName != null" >
+                #{academicName,jdbcType=VARCHAR},
+            </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
             </if>
@@ -153,6 +173,15 @@
             </if>
             <if test="classId != null">
                 class_id = #{classId,jdbcType=BIGINT},
+            </if>
+            <if test="className != null" >
+                class_name = #{className,jdbcType=VARCHAR},
+            </if>
+            <if test="academicId != null" >
+                academic_id = #{academicId,jdbcType=BIGINT},
+            </if>
+            <if test="academicName != null" >
+                academic_name = #{academicName,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
                 create_time = #{createTime,jdbcType=TIMESTAMP},

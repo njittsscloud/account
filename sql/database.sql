@@ -35,12 +35,15 @@ CREATE TABLE `njit_student` (
   `phone` varchar(50) DEFAULT '' COMMENT '手机号码',
   `email` varchar(100) DEFAULT '' COMMENT '邮箱',
   `desc` varchar(255) DEFAULT '' COMMENT '描述',
-  `class_id` bigint(20) DEFAULT '0' COMMENT '班级id',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+  `class_id` bigint(20) DEFAULT '-1' COMMENT '班级id',
+  `class_name` varchar(50) DEFAULT '' COMMENT '班级名称',
+  `academic_id` bigint(20) DEFAULT '-1' COMMENT '学院id',
+  `academic_name` varchar(50) DEFAULT '' COMMENT '学院名称',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `del_flag` int(1) DEFAULT '0' COMMENT '删除标志 0未删除 1已删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='学生表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='学生表';
 
 
 CREATE TABLE `njit_student_session` (

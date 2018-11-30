@@ -14,6 +14,8 @@ import com.tss.account.services.student.po.Student;
 import com.tss.account.services.student.po.StudentSession;
 import com.tss.basic.common.util.MD5Util;
 import com.tss.basic.common.util.ModelMapperUtil;
+import com.tss.basic.site.user.annotation.StudentUser;
+import com.tss.basic.site.util.TSSAssert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,6 +107,24 @@ public class StudentService implements StudentInterface {
     }
 
     @Override
+    public StudentUser getLoginInfo(String sessionId) {
+        StudentSession studentSession = studentSessionService.findBySessionId(sessionId);
+        TSSAssert.isNotNull(studentSession, "session无效");
+        Student student = studentDao.findById(studentSession.getUserId());
+        TSSAssert.isNotNull(student, "session无效");
+        
+        StudentUser studentUser = new StudentUser();
+        studentUser.setStudentId(studentSession.getUserId());
+        studentUser.setStudentNo(studentSession.getUserAcc());
+        studentUser.setStudentName(student.getName());
+        studentUser.setClassId(student.getClassId());
+        studentUser.setClassName(student.getClassName());
+        studentUser.setAcademicId(student.getAcademicId());
+        studentUser.setAcademicName(student.getAcademicName());
+        return studentUser;
+    }
+
+    @Override
     public UserBaseInfo getUserBaseInfo(Long id) {
         Student student = studentDao.findById(id);
         if (student == null) {
@@ -112,4 +132,6 @@ public class StudentService implements StudentInterface {
         }
         return ModelMapperUtil.strictMap(student, UserBaseInfo.class);
     }
+
+    
 }

@@ -12,4 +12,5 @@ public interface StudentSessionDao {
 
     int update(StudentSession record);
 
+    StudentSession findBySessionId(String sessionId);
 }

@@ -49,4 +49,8 @@ public class StudentSessionService {
         c.setDomain(domain);
         response.addCookie(c);
     }
+
+    public StudentSession findBySessionId(String sessionId) {
+        return studentSessionDao.findBySessionId(sessionId);
+    }
 }

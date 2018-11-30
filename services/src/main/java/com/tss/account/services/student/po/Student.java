@@ -59,6 +59,21 @@ public class Student {
     private Long classId;
 
     /**
+     * 班级名称
+     */
+    private String className;
+
+    /**
+     * 学院id
+     */
+    private Long academicId;
+
+    /**
+     * 学院名称
+     */
+    private String academicName;
+
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -183,5 +198,29 @@ public class Student {
 
     public void setStudentNo(String studentNo) {
         this.studentNo = studentNo;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public Long getAcademicId() {
+        return academicId;
+    }
+
+    public void setAcademicId(Long academicId) {
+        this.academicId = academicId;
+    }
+
+    public String getAcademicName() {
+        return academicName;
+    }
+
+    public void setAcademicName(String academicName) {
+        this.academicName = academicName;
     }
 }

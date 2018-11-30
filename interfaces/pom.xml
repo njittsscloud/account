@@ -15,6 +15,7 @@
 	<description>interfaces</description>
 	
 	<dependencies>
+		<!-- account -->
 		<dependency>
 			<groupId>com.tss.account</groupId>
 			<artifactId>common</artifactId>

@@ -11,12 +11,17 @@ public class Student {
     /**
      * 学号
      */
-    private String stuNo;
+    private String studentNo;
 
     /**
      * 密码
      */
     private String password;
+
+    /**
+     * 盐值
+     */
+    private String salt;
 
     /**
      * 姓名
@@ -74,14 +79,6 @@ public class Student {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getStuNo() {
-        return stuNo;
-    }
-
-    public void setStuNo(String stuNo) {
-        this.stuNo = stuNo;
     }
 
     public String getPassword() {
@@ -170,5 +167,21 @@ public class Student {
 
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getStudentNo() {
+        return studentNo;
+    }
+
+    public void setStudentNo(String studentNo) {
+        this.studentNo = studentNo;
     }
 }

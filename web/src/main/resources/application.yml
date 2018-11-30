@@ -1,10 +1,10 @@
 server:
-  port: 8086
+  port: 8080
 #  context-path: /account
 
 spring:
   application:
-    name: account
+    name: tss-account
   # 数据源配置
   datasource:
     url: jdbc:mysql://dev.tss.com:3306/njit_account?useUnicode=true&characterEncoding=utf8
@@ -19,10 +19,10 @@ mybatis:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://dev.tss.com:8080/eureka/
-  instance:
-    metadata-map: 
-      management:
+      defaultZone: http://dev.tss.com:8090/eureka/
+#  instance:
+#    metadata-map: 
+#      management:
 #        context-path: ${server.context-path}/actuator
 #    health-check-url: http://dev.tss.com:${server.port}${server.context-path}/actuator/health
 #    status-page-url: http://dev.tss.com:${server.port}${server.context-path}/swagger-ui.html
@@ -37,3 +37,7 @@ logging:
 management:
   security:
     enabled: false
+    
+cookie:
+  domain:
+    student: tss.com

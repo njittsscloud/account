@@ -13,7 +13,7 @@
 	<groupId>com.tss.account</groupId>
 	<artifactId>account</artifactId>
 	<version>1.0.0</version>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<name>account</name>
 	<description>account</description>
 
@@ -41,6 +41,7 @@
 				<scope>import</scope>
 			</dependency>
 
+			<!-- account -->
 			<dependency>
 				<groupId>com.tss.account</groupId>
 				<artifactId>common</artifactId>
@@ -62,6 +63,19 @@
 			<dependency>
 				<groupId>com.tss.account</groupId>
 				<artifactId>web</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+
+			<!-- basic -->
+			<dependency>
+				<groupId>com.tss</groupId>
+				<artifactId>basic-common</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.tss</groupId>
+				<artifactId>basic-site</artifactId>
 				<version>1.0.0</version>
 			</dependency>
 		</dependencies>

@@ -5,11 +5,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface StudentDao {
-    int deleteById(Long id);
 
     int insert(Student student);
 
     Student findById(Long id);
 
     int update(Student record);
+
+    Student findByAccount(String account);
 }

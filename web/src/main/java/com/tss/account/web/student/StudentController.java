@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Api(value = "学生模块", tags = "StudentController", description = "学生模块")
 @RestController
+@RequestMapping("/student")
 public class StudentController {
     private static final Logger LOG = LoggerFactory.getLogger(StudentController.class);
     

@@ -21,7 +21,7 @@
         <result column="del_flag" property="delFlag" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Base_Column_List">
-      id, student_no, password, salt, name, head_img, gender, phone, email, desc, class_id, 
+      id, student_no, password, salt, `name`, head_img, gender, phone, email, `desc`, class_id,
       class_name, academic_id, academic_name, create_time, update_time, del_flag
     </sql>
 

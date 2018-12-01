@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class StudentSessionService {
     private static final Logger LOG = LoggerFactory.getLogger(StudentSessionService.class);
 
-    @Value("${cookie.domain.studnet}")
+    @Value("${cookie.domain.student}")
     private String domain;
     
     @Autowired

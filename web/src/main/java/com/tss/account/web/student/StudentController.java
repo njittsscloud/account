@@ -43,7 +43,7 @@ public class StudentController {
     }
 
     @ApiOperation(value = "获取学生登录信息", notes = "学生登录")
-    @RequestMapping(value = "/getLoginInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/getLoginInfo", method = RequestMethod.GET)
     public StudentUser getLoginInfo(@CookieValue("studentsid") String sessionId) {
         return studentInterface.getLoginInfo(sessionId);
     }

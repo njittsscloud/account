@@ -5,6 +5,7 @@
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="user_id" property="userId" jdbcType="BIGINT"/>
         <result column="user_acc" property="userAcc" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
         <result column="session_id" property="sessionId" jdbcType="CHAR"/>
         <result column="status" property="status" jdbcType="INTEGER"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
@@ -14,7 +15,7 @@
         <result column="extra" property="extra" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, user_id, user_acc, session_id, status, create_time, expire_time, update_time, 
+    id, user_id, user_acc, user_name, session_id, status, create_time, expire_time, update_time,
     del_flag, extra
   </sql>
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
@@ -34,6 +35,9 @@
             </if>
             <if test="userAcc != null">
                 user_acc,
+            </if>
+            <if test="userName != null">
+                user_name,
             </if>
             <if test="sessionId != null">
                 session_id,
@@ -67,6 +71,9 @@
             <if test="userAcc != null">
                 #{userAcc,jdbcType=VARCHAR},
             </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
             <if test="sessionId != null">
                 #{sessionId,jdbcType=CHAR},
             </if>
@@ -98,6 +105,9 @@
             </if>
             <if test="userAcc != null">
                 user_acc = #{userAcc,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
             </if>
             <if test="sessionId != null">
                 session_id = #{sessionId,jdbcType=CHAR},

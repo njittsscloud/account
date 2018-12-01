@@ -50,6 +50,7 @@ CREATE TABLE `njit_student_session` (
   `id` bigint(20) NOT NULL COMMENT 'id',
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `user_acc` varchar(64) DEFAULT '' COMMENT '登录用户名',
+  `user_name` varchar(50) DEFAULT '' COMMENT '登录用户姓名',
   `session_id` char(40) DEFAULT '' COMMENT 'session id',
   `status` int(1) DEFAULT '1' COMMENT '状态 1 可用 2 过期',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

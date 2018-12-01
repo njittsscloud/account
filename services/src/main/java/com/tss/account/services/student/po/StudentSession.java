@@ -19,6 +19,11 @@ public class StudentSession {
     private String userAcc;
 
     /**
+     * 登录用户名
+     */
+    private String userName;
+
+    /**
      * session id
      */
     private String sessionId;
@@ -131,5 +136,13 @@ public class StudentSession {
 
     public void setExtra(String extra) {
         this.extra = extra;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

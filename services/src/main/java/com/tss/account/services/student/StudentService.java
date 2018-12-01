@@ -66,6 +66,7 @@ public class StudentService implements StudentInterface {
         studentSession.setStatus(SessionStatusEnum.VALID.getId());
         studentSession.setUserId(student.getId());
         studentSession.setUserAcc(student.getStudentNo());
+        studentSession.setUserName(student.getName());
         studentSessionService.saveSession(studentSession);
 
         LoginUserInfoVO loginUserInfo = sessionUser2LoginUser(studentSession);
@@ -76,6 +77,7 @@ public class StudentService implements StudentInterface {
         LoginUserInfoVO retailLoginUserInfo = new LoginUserInfoVO();
         retailLoginUserInfo.setUserId(sessionUser.getUserId());
         retailLoginUserInfo.setUserAcc(sessionUser.getUserAcc());
+        retailLoginUserInfo.setName(sessionUser.getUserName());
         retailLoginUserInfo.setCreateTime(sessionUser.getCreateTime());
         retailLoginUserInfo.setExpireDate(sessionUser.getExpireTime());
         retailLoginUserInfo.setSessionId(sessionUser.getSessionId());
@@ -83,7 +85,7 @@ public class StudentService implements StudentInterface {
     }
 
     /**
-     * 生成回话超时时间固定30天
+     * 生成会话超时时间30天
      *
      * @return
      */

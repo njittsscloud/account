@@ -45,7 +45,7 @@ CREATE TABLE `njit_student` (
 
 
 CREATE TABLE `njit_student_session` (
-  `id` bigint(20) NOT NULL COMMENT 'id',
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` bigint(20) DEFAULT '0' COMMENT '用户id',
   `user_acc` varchar(64) DEFAULT '' COMMENT '登录用户名',
   `user_name` varchar(50) DEFAULT '' COMMENT '登录用户姓名',
@@ -80,7 +80,7 @@ CREATE TABLE `njit_teacher` (
 
 
 CREATE TABLE `njit_teacher_session` (
-  `id` BIGINT(20) NOT NULL COMMENT 'id',
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` BIGINT(20) DEFAULT '0' COMMENT '用户id',
   `user_acc` VARCHAR(64) DEFAULT '' COMMENT '登录用户名',
   `user_name` VARCHAR(50) DEFAULT '' COMMENT '登录用户姓名',
@@ -115,7 +115,7 @@ CREATE TABLE `njit_syy` (
 
 
 CREATE TABLE `njit_syy_session` (
-  `id` BIGINT(20) NOT NULL COMMENT 'id',
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` BIGINT(20) DEFAULT '0' COMMENT '用户id',
   `user_acc` VARCHAR(64) DEFAULT '' COMMENT '登录用户名',
   `user_name` VARCHAR(50) DEFAULT '' COMMENT '登录用户姓名',
@@ -151,7 +151,7 @@ CREATE TABLE `njit_admin` (
 
 
 CREATE TABLE `njit_admin_session` (
-  `id` BIGINT(20) NOT NULL COMMENT 'id',
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` BIGINT(20) DEFAULT '0' COMMENT '用户id',
   `user_acc` VARCHAR(64) DEFAULT '' COMMENT '登录用户名',
   `user_name` VARCHAR(50) DEFAULT '' COMMENT '登录用户姓名',

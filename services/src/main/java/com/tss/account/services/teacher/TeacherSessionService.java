@@ -27,9 +27,8 @@ public class TeacherSessionService {
     
     @Autowired
     private TeacherSessionDao teacherSessionDao;
-    
 
-    protected String getSessionIdPrefix() {
+    public String getSessionIdPrefix() {
         return "su";
     }
 

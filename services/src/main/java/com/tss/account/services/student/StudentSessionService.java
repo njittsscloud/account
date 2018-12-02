@@ -27,7 +27,7 @@ public class StudentSessionService {
     private StudentSessionDao studentSessionDao;
     
 
-    protected String getSessionIdPrefix() {
+    public String getSessionIdPrefix() {
         return "su";
     }
 

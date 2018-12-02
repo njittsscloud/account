@@ -1,4 +1,4 @@
-package com.tss.account.interfaces.student.enums;
+package com.tss.account.interfaces.enums;
 
 /**
  * @author MQG

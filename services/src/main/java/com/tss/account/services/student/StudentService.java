@@ -5,7 +5,7 @@ import com.tss.account.common.exception.DataCheckException;
 import com.tss.account.common.util.UserUtil;
 import com.tss.account.common.exception.GenSessionFailedException;
 import com.tss.account.interfaces.student.StudentInterface;
-import com.tss.account.interfaces.student.enums.SessionStatusEnum;
+import com.tss.account.interfaces.enums.SessionStatusEnum;
 import com.tss.account.interfaces.student.vo.UserBaseInfo;
 import com.tss.account.interfaces.vo.LoginUserInfoVO;
 import com.tss.account.interfaces.vo.UserIdentityVO;

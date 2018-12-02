@@ -41,3 +41,6 @@ management:
 cookie:
   domain:
     student: tss.com
+    teacher: tss.com
+    syy: tss.com
+    admin: tss.com

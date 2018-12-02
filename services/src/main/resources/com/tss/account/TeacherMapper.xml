@@ -19,7 +19,7 @@
         <result column="del_flag" property="delFlag" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, job_no, password, salt, name, head_img, gender, phone, email, desc, academic_id, 
+    id, job_no, password, salt, `name`, head_img, gender, phone, email, `desc`, academic_id,
     academic_name, create_time, update_time, del_flag
   </sql>
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
@@ -44,7 +44,7 @@
                 salt,
             </if>
             <if test="name != null">
-                name,
+                `name`,
             </if>
             <if test="headImg != null">
                 head_img,
@@ -59,7 +59,7 @@
                 email,
             </if>
             <if test="desc != null">
-                desc,
+                `desc`,
             </if>
             <if test="academicId != null">
                 academic_id,
@@ -138,7 +138,7 @@
                 salt = #{salt,jdbcType=VARCHAR},
             </if>
             <if test="name != null">
-                name = #{name,jdbcType=VARCHAR},
+                `name` = #{name,jdbcType=VARCHAR},
             </if>
             <if test="headImg != null">
                 head_img = #{headImg,jdbcType=VARCHAR},
@@ -153,7 +153,7 @@
                 email = #{email,jdbcType=VARCHAR},
             </if>
             <if test="desc != null">
-                desc = #{desc,jdbcType=VARCHAR},
+                `desc` = #{desc,jdbcType=VARCHAR},
             </if>
             <if test="academicId != null">
                 academic_id = #{academicId,jdbcType=BIGINT},

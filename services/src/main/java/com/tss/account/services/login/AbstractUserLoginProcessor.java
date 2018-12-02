@@ -13,8 +13,6 @@ import java.util.UUID;
 
 public abstract class AbstractUserLoginProcessor<T> {
 
-    public abstract AbstractUserLoginProcessor getUserLoginProcessor();
-
     public abstract AccountInfo<T> findByAccount(String account);
 
     public abstract AccountSessionInfo saveSession(AccountInfo<T> accountInfo);
@@ -23,11 +21,12 @@ public abstract class AbstractUserLoginProcessor<T> {
 
 
     public final LoginUserInfoVO doLogin(UserIdentityVO userIdentity) {
-        AccountInfo accountInfo = getUserLoginProcessor().findByAccount(userIdentity.getUserName());
+        AccountInfo accountInfo = findByAccount(userIdentity.getUserName());
         if (accountInfo == null) {
             throw new BadUserOrPasswordException();
         }
         // 用户名或密码错误
+        System.out.println(UserUtil.hashPassword(userIdentity.getPassword(), accountInfo.getSalt()));
         if (!UserUtil.hashPassword(userIdentity.getPassword(), accountInfo.getSalt()).equals(accountInfo.getPassword())) {
             throw new BadUserOrPasswordException();
         }

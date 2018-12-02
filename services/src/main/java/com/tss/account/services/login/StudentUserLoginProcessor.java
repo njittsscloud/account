@@ -24,11 +24,6 @@ public class StudentUserLoginProcessor extends AbstractUserLoginProcessor<Studen
     private StudentSessionService studentSessionService;
     
     @Override
-    public AbstractUserLoginProcessor getUserLoginProcessor() {
-        return this;
-    }
-
-    @Override
     public AccountInfo<Student> findByAccount(String account) {
         Student student = studentDao.findByAccount(account);
         if (student == null) {

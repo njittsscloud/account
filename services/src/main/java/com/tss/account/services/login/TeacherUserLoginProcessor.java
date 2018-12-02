@@ -24,11 +24,6 @@ public class TeacherUserLoginProcessor extends AbstractUserLoginProcessor<Teache
     private TeacherSessionService teacherSessionService;
     
     @Override
-    public AbstractUserLoginProcessor getUserLoginProcessor() {
-        return this;
-    }
-
-    @Override
     public AccountInfo<Teacher> findByAccount(String account) {
         Teacher teacher = teacherDao.findByAccount(account);
         if (teacher == null) {

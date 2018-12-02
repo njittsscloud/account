@@ -29,7 +29,7 @@ public class TeacherSessionService {
     private TeacherSessionDao teacherSessionDao;
 
     public String getSessionIdPrefix() {
-        return "su";
+        return "tu";
     }
 
     /**

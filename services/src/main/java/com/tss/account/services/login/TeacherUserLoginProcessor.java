@@ -2,6 +2,7 @@ package com.tss.account.services.login;
 
 import com.tss.account.common.exception.GenSessionFailedException;
 import com.tss.account.interfaces.enums.SessionStatusEnum;
+import com.tss.account.interfaces.vo.LoginUserInfoVO;
 import com.tss.account.services.teacher.TeacherSessionService;
 import com.tss.account.services.teacher.dao.TeacherDao;
 import com.tss.account.services.teacher.po.Teacher;
@@ -61,6 +62,11 @@ public class TeacherUserLoginProcessor extends AbstractUserLoginProcessor<Teache
     @Override
     public String getSessionIdPrefix() {
         return teacherSessionService.getSessionIdPrefix();
+    }
+
+    @Override
+    public LoginUserInfoVO.CookieInfo getCookieInfo(String sessionId) {
+        return teacherSessionService.getCookieInfo(sessionId);
     }
 
 }

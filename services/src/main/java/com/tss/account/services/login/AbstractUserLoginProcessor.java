@@ -18,7 +18,8 @@ public abstract class AbstractUserLoginProcessor<T> {
     public abstract AccountSessionInfo saveSession(AccountInfo<T> accountInfo);
 
     public abstract String getSessionIdPrefix();
-
+    
+    public abstract LoginUserInfoVO.CookieInfo getCookieInfo(String sessionId);
 
     public final LoginUserInfoVO doLogin(UserIdentityVO userIdentity) {
         AccountInfo accountInfo = findByAccount(userIdentity.getUserName());
@@ -34,7 +35,10 @@ public abstract class AbstractUserLoginProcessor<T> {
         // 生成保存session
         AccountSessionInfo sessionInfo = saveSession(accountInfo);
         // 登录用户信息
-        return sessionUser2LoginUser(sessionInfo);
+        LoginUserInfoVO loginUserInfoVO = sessionUser2LoginUser(sessionInfo);
+        // cookie
+        loginUserInfoVO.setCookieInfo(getCookieInfo(loginUserInfoVO.getSessionId()));
+        return loginUserInfoVO;
     }
 
     public final LoginUserInfoVO sessionUser2LoginUser(AccountSessionInfo sessionInfo) {

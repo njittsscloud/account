@@ -1,3 +1,13 @@
+CREATE USER 'njittss'@'%' IDENTIFIED BY 'njittss!@#$5678'; 
+CREATE USER 'njittss'@'127.0.0.1' IDENTIFIED BY 'njittss!@#$5678'; 
+CREATE USER 'njittss'@'localhost' IDENTIFIED BY 'njittss!@#$5678'; 
+
+GRANT ALL PRIVILEGES ON njit_account.* TO 'njittss'@'%' IDENTIFIED BY 'njittss!@#$5678' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON njit_data.* TO 'njittss'@'%' IDENTIFIED BY 'njittss!@#$5678' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON njit_report.* TO 'njittss'@'%' IDENTIFIED BY 'njittss!@#$5678' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON njit_experiment.* TO 'njittss'@'%' IDENTIFIED BY 'njittss!@#$5678' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
 -- CREATE TABLE `njit_admin` (
 --   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
 --   PRIMARY KEY (`id`)

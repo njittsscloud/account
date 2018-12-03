@@ -4,7 +4,6 @@ import com.tss.account.interfaces.teacher.TeacherInterface;
 import com.tss.account.interfaces.vo.LoginUserInfoVO;
 import com.tss.account.interfaces.vo.UserIdentityVO;
 import com.tss.account.services.login.AbstractUserLoginProcessor;
-import com.tss.account.services.teacher.TeacherSessionService;
 import com.tss.basic.site.argumentresolver.InternalJsonParam;
 import com.tss.basic.site.user.annotation.TeacherUser;
 import io.swagger.annotations.Api;
@@ -33,17 +32,13 @@ public class TeacherController {
     @Autowired
     private TeacherInterface teacherInterface;
     @Autowired
-    private TeacherSessionService teacherSessionService;
-    @Autowired
     @Qualifier("teacherUserLoginProcessor")
     private AbstractUserLoginProcessor userLoginProcessor;
 
     @ApiOperation(value = "教师登录", notes = "教师登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public LoginUserInfoVO login(HttpServletResponse response, @InternalJsonParam(validation = true) UserIdentityVO userIdentity) {
-        LoginUserInfoVO loginUserInfo = userLoginProcessor.doLogin(userIdentity);
-        teacherSessionService.setLoginSessionCookie(response, loginUserInfo.getSessionId());
-        return loginUserInfo;
+        return userLoginProcessor.doLogin(userIdentity);
     }
 
     @ApiOperation(value = "获取教师登录信息", notes = "获取教师登录信息")

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tss.account.services.student.dao.StudentSessionDao">
-    <resultMap id="BaseResultMap" type="com.tss.account.services.student.po.StudentSession">
+<mapper namespace="com.tss.account.services.teacher.dao.TeacherSessionDao">
+    <resultMap id="BaseResultMap" type="com.tss.account.services.teacher.po.TeacherSession">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="user_id" property="userId" jdbcType="BIGINT"/>
         <result column="user_acc" property="userAcc" jdbcType="VARCHAR"/>
@@ -15,17 +15,17 @@
         <result column="extra" property="extra" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, user_id, user_acc, user_name, session_id, status, create_time, expire_time, update_time,
+    id, user_id, user_acc, user_name, session_id, status, create_time, expire_time, update_time, 
     del_flag, extra
   </sql>
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List"/>
-        from njit_student_session
+        from njit_teacher_session
         where id = #{id,jdbcType=BIGINT}
     </select>
-    <insert id="insert" parameterType="com.tss.account.services.student.po.StudentSession">
-        insert into njit_student_session
+    <insert id="insert" parameterType="com.tss.account.services.teacher.po.TeacherSession">
+        insert into njit_teacher_session
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -97,8 +97,8 @@
             </if>
         </trim>
     </insert>
-    <update id="update" parameterType="com.tss.account.services.student.po.StudentSession">
-        update njit_student_session
+    <update id="update" parameterType="com.tss.account.services.teacher.po.TeacherSession">
+        update njit_teacher_session
         <set>
             <if test="userId != null">
                 user_id = #{userId,jdbcType=BIGINT},
@@ -137,7 +137,7 @@
     <select id="findBySessionId" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from njit_student_session
+        from njit_teacher_session
         where session_id = #{sessionId} and del_flag = 0 and status = 1
         limit 1
     </select>

@@ -31,6 +31,8 @@ public class UserUtil {
      * @return
      */
     public static String hashPassword(String password, String salt) {
-        return MD5Util.hex(password + salt);
+        String hex = MD5Util.hex(password + salt);
+        System.out.println("hex:" + hex);
+        return hex;
     }
 }

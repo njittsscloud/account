@@ -1,8 +1,8 @@
-package com.tss.account.services.student;
+package com.tss.account.services.teacher;
 
 import com.tss.account.interfaces.vo.LoginUserInfoVO;
-import com.tss.account.services.student.dao.StudentSessionDao;
-import com.tss.account.services.student.po.StudentSession;
+import com.tss.account.services.teacher.dao.TeacherSessionDao;
+import com.tss.account.services.teacher.po.TeacherSession;
 import com.tss.basic.site.user.item.CookieName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,38 +10,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-
 /**
  * @author: MQG
  * @date: 2018/11/30
  */
 @Service
-public class StudentSessionService {
-    private static final Logger LOG = LoggerFactory.getLogger(StudentSessionService.class);
+public class TeacherSessionService {
+    private static final Logger LOG = LoggerFactory.getLogger(TeacherSessionService.class);
 
-    @Value("${cookie.domain.student}")
+    @Value("${cookie.domain.teacher}")
     private String domain;
     
     @Autowired
-    private StudentSessionDao studentSessionDao;
+    private TeacherSessionDao teacherSessionDao;
 
     public String getSessionIdPrefix() {
-        return "su";
+        return "tu";
     }
 
-    public void saveSession(StudentSession studentSession) {
-        studentSessionDao.insert(studentSession);
+    public void saveSession(TeacherSession teacherSession) {
+        teacherSessionDao.insert(teacherSession);
     }
 
-    public StudentSession findBySessionId(String sessionId) {
-        return studentSessionDao.findBySessionId(sessionId);
+    public TeacherSession findBySessionId(String sessionId) {
+        return teacherSessionDao.findBySessionId(sessionId);
     }
 
     public LoginUserInfoVO.CookieInfo getCookieInfo(String sessionId) {
         LoginUserInfoVO.CookieInfo cookieInfo = new LoginUserInfoVO.CookieInfo();
-        cookieInfo.setCookieName(CookieName.STUDENT.getCookieName());
+        cookieInfo.setCookieName(CookieName.TEACHER.getCookieName());
         cookieInfo.setCookieValue(sessionId);
         cookieInfo.setCookieDomain(domain);
         cookieInfo.setCookiePath("/");

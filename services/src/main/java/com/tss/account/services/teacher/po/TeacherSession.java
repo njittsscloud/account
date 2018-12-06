@@ -1,60 +1,60 @@
-package com.tss.account.services.student.po;
+package com.tss.account.services.teacher.po;
 
 import java.util.Date;
 
-public class StudentSession {
+public class TeacherSession {
     /**
-     * id
+     *id
      */
     private Long id;
 
     /**
-     * 用户id
+     *用户id
      */
     private Long userId;
 
     /**
-     * 登录用户名
+     *登录用户名
      */
     private String userAcc;
 
     /**
-     * 登录用户名
+     *登录用户姓名
      */
     private String userName;
 
     /**
-     * session id
+     *session id
      */
     private String sessionId;
 
     /**
-     * 状态 1 可用 2 过期
+     *状态 1 可用 2 过期
      */
     private Integer status;
 
     /**
-     * 创建时间
+     *创建时间
      */
     private Date createTime;
 
     /**
-     * 过期时间
+     *过期时间
      */
     private Date expireTime;
 
     /**
-     * 更新时间
+     *更新时间
      */
     private Date updateTime;
 
     /**
-     * 删除标志 0 正常 1删除
+     *删除标志 0 正常 1删除
      */
     private Integer delFlag;
 
     /**
-     * 扩展信息
+     *扩展信息
      */
     private String extra;
 
@@ -80,6 +80,14 @@ public class StudentSession {
 
     public void setUserAcc(String userAcc) {
         this.userAcc = userAcc;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getSessionId() {
@@ -136,13 +144,5 @@ public class StudentSession {
 
     public void setExtra(String extra) {
         this.extra = extra;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 }

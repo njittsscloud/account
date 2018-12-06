@@ -14,8 +14,6 @@ import com.tss.basic.site.user.annotation.StudentUser;
  */
 public interface StudentInterface  {
 
-    LoginUserInfoVO doLogin(UserIdentityVO userIdentity);
-    
     UserBaseInfo getUserBaseInfo(Long id);
 
     StudentUser getLoginInfo(String sessionId);

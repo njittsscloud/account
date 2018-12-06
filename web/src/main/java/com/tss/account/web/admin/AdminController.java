@@ -46,6 +46,7 @@ public class AdminController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public LoginUserInfoVO login(HttpServletResponse response, @JsonParam(validation = true) UserIdentityVO userIdentity) {
         return userLoginProcessor.doLogin(userIdentity);
+        
     }
 
     @ApiOperation(value = "获取管理员登录信息", notes = "管理员登录")

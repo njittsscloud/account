@@ -3,20 +3,21 @@ package com.tss.account.services.student;
 import com.tss.account.common.exception.DataCheckException;
 import com.tss.account.interfaces.student.StudentInterface;
 import com.tss.account.interfaces.student.vo.UserBaseInfo;
-import com.tss.account.interfaces.vo.LoginUserInfoVO;
+import com.tss.account.interfaces.vo.UserAuthInfoVO;
 import com.tss.account.services.student.dao.StudentDao;
 import com.tss.account.services.student.po.Student;
-import com.tss.account.services.student.po.StudentSession;
 import com.tss.basic.common.util.ModelMapperUtil;
 import com.tss.basic.site.user.annotation.StudentUser;
 import com.tss.basic.site.util.TSSAssert;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,26 +31,34 @@ import java.util.Set;
 public class StudentService implements StudentInterface {
     private static final Logger LOG = LoggerFactory.getLogger(StudentService.class);
 
+    @Value("${redis.user.prefix}")
+    private String userPrefix;
     @Autowired
     private StudentDao studentDao;
     @Autowired
-    private StudentSessionService studentSessionService;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Override
-    public StudentUser getLoginInfo(String sessionId) {
-        StudentSession studentSession = studentSessionService.findBySessionId(sessionId);
-        TSSAssert.isNotNull(studentSession, "session无效");
-        Student student = studentDao.findById(studentSession.getUserId());
-        TSSAssert.isNotNull(student, "session无效");
+    public StudentUser getLoginInfo(String userAcc) {
+        StudentUser studentUser;
+        // redis缓存获取
+        Object temp = redisTemplate.opsForValue().get(userPrefix + userAcc);
+        if (temp != null || temp instanceof StudentUser) {
+            studentUser = (StudentUser) temp;
+        } else {
+            Student student = studentDao.findByAccount(userAcc);
+            TSSAssert.isNotNull(student, "账号无效");
 
-        StudentUser studentUser = new StudentUser();
-        studentUser.setStudentId(studentSession.getUserId());
-        studentUser.setStudentNo(studentSession.getUserAcc());
-        studentUser.setStudentName(student.getName());
-        studentUser.setClassId(student.getClassId());
-        studentUser.setClassName(student.getClassName());
-        studentUser.setAcademicId(student.getAcademicId());
-        studentUser.setAcademicName(student.getAcademicName());
+            studentUser = new StudentUser();
+            studentUser.setStudentId(student.getId());
+            studentUser.setStudentNo(student.getStudentNo());
+            studentUser.setStudentName(student.getName());
+            studentUser.setClassId(student.getClassId());
+            studentUser.setClassName(student.getClassName());
+            studentUser.setAcademicId(student.getAcademicId());
+            studentUser.setAcademicName(student.getAcademicName());
+            redisTemplate.opsForValue().set(userPrefix + userAcc, student);
+        }
         return studentUser;
     }
 
@@ -63,10 +72,10 @@ public class StudentService implements StudentInterface {
     }
 
     @Override
-    public LoginUserInfoVO getLoginInfoByUserAcc(String userAcc) {
+    public UserAuthInfoVO getAuthInfoByUserAcc(String userAcc) {
         Student student = studentDao.findByAccount(userAcc);
         if (student != null) {
-            LoginUserInfoVO userInfo = new LoginUserInfoVO();
+            UserAuthInfoVO userInfo = new UserAuthInfoVO();
             userInfo.setUserAcc(student.getStudentNo());
             userInfo.setName(student.getName());
             userInfo.setPassword(student.getPassword());
@@ -75,7 +84,6 @@ public class StudentService implements StudentInterface {
             // userInfo.setPermissions();
             return userInfo;
         }
-
         return null;
     }
 

@@ -4,7 +4,7 @@
  * Date: 2018/12/5
  * Description:AdminController.java
  */
-package com.tss.account.web.admin;
+package com.tss.account.admin;
 
 import com.tss.account.interfaces.admin.AdminInterface;
 import com.tss.account.interfaces.admin.vo.AdminBaseInfoVo;

@@ -1,4 +1,4 @@
-package com.tss.account.web;
+package com.tss.account.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

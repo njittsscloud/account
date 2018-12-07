@@ -17,4 +17,6 @@ public interface StudentInterface  {
     UserBaseInfo getUserBaseInfo(Long id);
 
     StudentUser getLoginInfo(String sessionId);
+
+    LoginUserInfoVO getLoginInfoByUserAcc(String userAcc);
 }

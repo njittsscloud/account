@@ -3,6 +3,7 @@ package com.tss.account.services.student;
 import com.tss.account.common.exception.DataCheckException;
 import com.tss.account.interfaces.student.StudentInterface;
 import com.tss.account.interfaces.student.vo.UserBaseInfo;
+import com.tss.account.interfaces.vo.LoginUserInfoVO;
 import com.tss.account.services.student.dao.StudentDao;
 import com.tss.account.services.student.po.Student;
 import com.tss.account.services.student.po.StudentSession;
@@ -56,5 +57,13 @@ public class StudentService implements StudentInterface {
         return ModelMapperUtil.strictMap(student, UserBaseInfo.class);
     }
 
+    @Override
+    public LoginUserInfoVO getLoginInfoByUserAcc(String userAcc) {
+        Student student = studentDao.findByAccount(userAcc);
+        if (student != null) {
+            return ModelMapperUtil.strictMap(student, LoginUserInfoVO.class);
+        }
+        return null;
+    }
 
 }

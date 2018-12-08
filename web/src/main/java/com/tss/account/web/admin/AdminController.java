@@ -1,9 +1,3 @@
-/*
- * Copyright (C) 2017-2018 Qy All rights reserved
- * Author: Liu Tong
- * Date: 2018/12/5
- * Description:AdminController.java
- */
 package com.tss.account.web.admin;
 
 import com.tss.account.interfaces.admin.AdminInterface;

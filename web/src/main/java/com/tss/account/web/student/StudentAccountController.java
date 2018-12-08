@@ -24,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 @Api(value = "学生模块", tags = "StudentController", description = "学生模块")
 @RestController
 @RequestMapping("/student")
-public class StudentController {
-    private static final Logger LOG = LoggerFactory.getLogger(StudentController.class);
+public class StudentAccountController {
+    private static final Logger LOG = LoggerFactory.getLogger(StudentAccountController.class);
     
     @Autowired
     private StudentInterface studentInterface;
@@ -39,7 +39,7 @@ public class StudentController {
         return userLoginProcessor.doLogin(userIdentity);
     }
 
-    @ApiOperation(value = "获取学生登录信息", notes = "学生登录")
+    @ApiOperation(value = "获取学生登录信息", notes = "获取学生登录信息")
     @RequestMapping(value = "/getLoginInfo", method = RequestMethod.GET)
     public StudentUser getLoginInfo(@CookieValue("studentsid") String sessionId) {
         return studentInterface.getLoginInfo(sessionId);
@@ -50,4 +50,5 @@ public class StudentController {
     public UserBaseInfo getUserBaseInfo(@PathVariable Long id) {
         return studentInterface.getUserBaseInfo(id);
     }
+
 }

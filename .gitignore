@@ -26,3 +26,7 @@
 /nbdist/
 /.nb-gradle/
 
+/interfaces/target/
+/common/target/
+/services/target/
+/web/target/

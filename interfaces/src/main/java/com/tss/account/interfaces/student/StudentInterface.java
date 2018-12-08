@@ -2,6 +2,7 @@ package com.tss.account.interfaces.student;
 
 import com.tss.account.interfaces.student.vo.UserBaseInfo;
 import com.tss.account.interfaces.vo.LoginUserInfoVO;
+import com.tss.account.interfaces.vo.UserAuthInfoVO;
 import com.tss.basic.site.user.annotation.StudentUser;
 
 /**
@@ -14,7 +15,7 @@ public interface StudentInterface  {
 
     UserBaseInfo getUserBaseInfo(Long id);
 
-    StudentUser getLoginInfo(String sessionId);
+    StudentUser getLoginInfo(String userAcc);
 
-    LoginUserInfoVO getLoginInfoByUserAcc(String userAcc);
+    UserAuthInfoVO getAuthInfoByUserAcc(String userAcc);
 }

@@ -39,12 +39,6 @@ public class StudentAccountController {
         return userLoginProcessor.doLogin(userIdentity);
     }
 
-    @ApiOperation(value = "获取学生登录信息", notes = "获取学生登录信息")
-    @RequestMapping(value = "/getLoginInfo", method = RequestMethod.GET)
-    public StudentUser getLoginInfo(@CookieValue("studentsid") String sessionId) {
-        return studentInterface.getLoginInfo(sessionId);
-    }
-
     @ApiOperation(value = "获取用户基本信息", notes = "获取用户基本信息")
     @RequestMapping(value = "/getUserBaseInfoById/{id}", method = RequestMethod.GET)
     public UserBaseInfo getUserBaseInfo(@PathVariable Long id) {

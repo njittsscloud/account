@@ -31,7 +31,7 @@ import java.util.Set;
 public class StudentService implements StudentInterface {
     private static final Logger LOG = LoggerFactory.getLogger(StudentService.class);
 
-    @Value("${redis.user.prefix}")
+    @Value("${redis.user.student.prefix}")
     private String userPrefix;
     @Autowired
     private StudentDao studentDao;

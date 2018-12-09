@@ -10,6 +10,13 @@ logging:
 spring:
   application:
     name: tss-account
+  # zipkin config
+  zipkin:
+    base-url: http://localhost:8093
+  sleuth:
+    sampler:
+      # 100%的概率将链路的数据上传给Zipkin Server，默认0.1
+      percentage: 1.0
   # datasource config
   datasource:
     url: jdbc:mysql://dev.tss.com:3306/njit_account?useUnicode=true&characterEncoding=utf8
@@ -65,5 +72,12 @@ cookie:
     syy: tss.com
     admin: tss.com
 redis: 
-  user: 
-    prefix: tss_user_
+  user:
+    student:
+      prefix: tss_user_s_
+    teacher:
+      prefix: tss_user_t_
+    syy:
+      prefix: tss_user_sy_
+    admin:
+      prefix: tss_user_a_

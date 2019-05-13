@@ -1,76 +1,42 @@
 server:
-  port: 8080
-  context-path: /account
+  port: 8081
+  context-path: /report
+
+spring:
+  application:
+    name: tss-report
+  # datasource config
+  datasource:
+    url: jdbc:mysql://dev.tss.com:3306/njit_report?useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: njittss
+    password: njittss!@#$5678
+
+# MyBatis配置
+mybatis:
+  mapper-locations: classpath*:com/tss/report/*.xml
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka-server/eureka/
+  instance:
+    metadata-map:
+      management:
+#        context-path: ${server.context-path}/actuator
+#    health-check-url: http://dev.tss.com:${server.port}${server.context-path}/actuator/health
+#    status-page-url: http://dev.tss.com:${server.port}${server.context-path}/swagger-ui.html
+#    status-page-url: http://dev.tss.com:${server.port}${server.context-path}/actuator/info
+#    home-page-url: http://dev.tss.com:${server.port}/
 
 logging:
   level:
     root: INFO
     com.tss: DEBUG
 
-spring:
-  application:
-    name: tss-account
-  # datasource config
-  datasource:
-    url: jdbc:mysql://dev.tss.com:3306/njit_account?useUnicode=true&characterEncoding=utf8
-    driver-class-name: com.mysql.jdbc.Driver
-    username: njittss
-    password: njittss!@#$5678
-  # redis config
-  redis:
-    host: dev.tss.com
-    port: 6379
-    # redis密码，默认为空
-    password: njittss
-    # redis分片，默认值0（redis默认有16个分片，0-15）
-    database: 0
-    pool:
-      # 连接池最大连接数，默认值8（负数表示没有限制）
-      max-active: 8
-      # 连接最大等待时间（负数表示没有限制）
-      max-wait: -1
-      # 连接池中的最大空闲连接
-      max-idle: 8
-      # 连接池中的最小空闲连接
-      min-idle: 0
-    # 连接超时时间（毫秒）
-    timeout: 10000
-
-# MyBatis配置
-mybatis:
-  mapper-locations: classpath*:com/tss/account/*.xml
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8090/eureka-server/eureka
-  instance:
-    metadata-map:
-      management:
-        context-path: ${server.context-path}/actuator
-    health-check-url: http://localhost:${server.port}${server.context-path}/actuator/health
-#    status-page-url: http://localhost:${server.port}${server.context-path}/swagger-ui.html
-    status-page-url: http://localhost:${server.port}${server.context-path}/actuator/info
-    home-page-url: http://localhost:${server.port}/
-
 management:
   security:
     enabled: false
-    
-# custom config    
-cookie:
-  domain:
-    student: tss.com
-    teacher: tss.com
-    syy: tss.com
-    admin: tss.com
-redis: 
-  user:
-    student:
-      prefix: tss_user_s_
-    teacher:
-      prefix: tss_user_t_
-    syy:
-      prefix: tss_user_sy_
-    admin:
-      prefix: tss_user_a_
+
+data:
+  serviceId: TSS-DATA

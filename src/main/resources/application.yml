@@ -12,7 +12,7 @@ spring:
     name: tss-account
   # datasource config
   datasource:
-    url: jdbc:mysql://dev.tss.com:3306/njit_account?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://dev.tss.com:3306/njit_account?useUnicode=true&characterEncoding=utf8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: njittss
     password: njittss!@#$5678

@@ -7,6 +7,7 @@ import com.tss.account.interfaces.vo.LoginUserInfoVO;
 import com.tss.account.interfaces.vo.UserAuthInfoVO;
 import com.tss.account.services.student.dao.StudentDao;
 import com.tss.account.services.student.po.Student;
+import com.tss.account.services.student.po.StudentSession;
 import com.tss.basic.common.util.ModelMapperUtil;
 import com.tss.basic.site.user.annotation.StudentUser;
 import com.tss.basic.site.util.TSSAssert;
@@ -33,8 +34,13 @@ public class StudentService implements StudentInterface {
 
     @Value("${redis.user.student.prefix}")
     private String userPrefix;
+
     @Autowired
     private StudentDao studentDao;
+
+    @Autowired
+    private StudentSessionService studentSessionService;
+
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -63,12 +69,20 @@ public class StudentService implements StudentInterface {
     }
 
     @Override
-    public UserBaseInfo getUserBaseInfo(Long id) {
-        Student student = studentDao.findById(id);
-        if (student == null) {
-            throw new DataCheckException("无效的id");
+    public UserBaseInfo getUserBaseInfoBySessionId(String sessionId) {
+        StudentSession studentSession = studentSessionService.findBySessionId(sessionId);
+        if (studentSession == null) {
+            throw new DataCheckException("session失效");
         }
-        return ModelMapperUtil.strictMap(student, UserBaseInfo.class);
+
+        Student student = studentDao.findById(studentSession.getUserId());
+        if (student == null) {
+            throw new DataCheckException("无效的用户id");
+        }
+
+        UserBaseInfo userBaseInfo = ModelMapperUtil.strictMap(student, UserBaseInfo.class);
+        userBaseInfo.setStuNo(student.getStudentNo());
+        return userBaseInfo;
     }
 
     @Override

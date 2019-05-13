@@ -21,14 +21,15 @@ import javax.servlet.http.HttpServletResponse;
  * @author: MQG
  * @date: 2018/10/16
  */
-@Api(value = "学生模块", tags = "StudentController", description = "学生模块")
+@Api(value = "学生模块", tags = "StudentAccountController", description = "学生模块")
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/student/account")
 public class StudentAccountController {
     private static final Logger LOG = LoggerFactory.getLogger(StudentAccountController.class);
     
     @Autowired
     private StudentInterface studentInterface;
+
     @Autowired
     @Qualifier("studentUserLoginProcessor")
     private AbstractUserLoginProcessor userLoginProcessor;
@@ -40,9 +41,9 @@ public class StudentAccountController {
     }
 
     @ApiOperation(value = "获取用户基本信息", notes = "获取用户基本信息")
-    @RequestMapping(value = "/getUserBaseInfoById/{id}", method = RequestMethod.GET)
-    public UserBaseInfo getUserBaseInfo(@PathVariable Long id) {
-        return studentInterface.getUserBaseInfo(id);
+    @RequestMapping(value = "/getUserBaseInfoBySessionId/{sessionId}", method = RequestMethod.GET)
+    public UserBaseInfo getUserBaseInfo(@PathVariable String sessionId) {
+        return studentInterface.getUserBaseInfoBySessionId(sessionId);
     }
 
 }

@@ -6,14 +6,20 @@ import com.tss.account.interfaces.vo.UserAuthInfoVO;
 import com.tss.basic.site.user.annotation.StudentUser;
 
 /**
- * StudentInterface
- * 
+ * 学生信息
+ *
  * @author: MQG
  * @date: 2018/10/16
  */
-public interface StudentInterface  {
+public interface StudentInterface {
 
-    UserBaseInfo getUserBaseInfo(Long id);
+    /**
+     * 根据sessionId获取登录用户信息
+     *
+     * @param sessionId
+     * @return
+     */
+    UserBaseInfo getUserBaseInfoBySessionId(String sessionId);
 
     StudentUser getLoginInfo(String userAcc);
 
